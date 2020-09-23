@@ -26,4 +26,17 @@ $(document).ready(function () {
     // alert("log in button clicked");
     firebase.auth().signInWithRedirect(google_provider);
   });
+  
+  $("#logout").click(() => {
+  alert("log out button clicked");
+  firebase
+    .auth()
+    .signOut()
+    .then(function () {
+      alert("sign out successful");
+    })
+    .catch(function (error) {
+      alert("error when trying to sign out");
+    });
+});
 });
