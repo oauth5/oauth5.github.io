@@ -13,20 +13,8 @@ $(document).ready(function () {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
+  // Google Auth Provider (used for redirect and login with google)
   var google_provider = new firebase.auth.GoogleAuthProvider();
-
-  // firebase.auth().onAuthStateChanged((user) => {
-  //   if (!!user) {
-  //     alert(`${user.displayName || user.email}`);
-  //   }
-  // });
-
-  // firebase
-  //   .auth()
-  //   .signInWithEmailAndPassword("junk@novocin.com", "fartfart")
-  //   .catch(function (error) {
-  //     alert(error.message);
-  //   });
 
   firebase.auth().onAuthStateChanged((user) => {
     if (!!user) {
@@ -34,41 +22,8 @@ $(document).ready(function () {
     }
   });
 
-  // $("#loginemail").click(() => {
-  //   firebase
-  //     .auth()
-  //     .signInWithEmailAndPassword($("#email").val(), $("#password").val())
-  //     .catch(function (error) {
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //       alert(errorMessage);
-  //     });
-  // });
-
-  // $("#register").click(() => {
-  //   let pwd1 = $("#password").val();
-  //   let pwd2 = $("#password2").val();
-  //   if (pwd1 == pwd2) {
-  //     firebase
-  //       .auth()
-  //       .createUserWithEmailAndPassword($("#email").val(), $("#password").val())
-  //       .catch(function (error) {
-  //         var errorCode = error.code;
-  //         var errorMessage = error.message;
-  //         alert(errorMessage);
-  //       });
-  //   } else {
-  //     alert("passwords don't match");
-  //   }
-  // });
-
-  // $("#reset").click(() => {
-  //   firebase.auth().sendPasswordResetEmail($("#email").val());
-  // });
-
   $("#login").click(() => {
     // alert("log in button clicked");
-    alert(JSON.stringify(google_provider));
     firebase.auth().signInWithRedirect(google_provider);
   });
 });
